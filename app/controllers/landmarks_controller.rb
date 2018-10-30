@@ -35,7 +35,7 @@ get '/landmarks' do
       #     @landmarks.title << Title.create(params[:name])
       #   else !params[:figure][:name].empty? 
       #   @landmarks.figure << Figure.create(params[:landmark])
-      end
+      # end
       @landmarks.save
         redirect "landmarks/#{@landmarks.id}"
       end
