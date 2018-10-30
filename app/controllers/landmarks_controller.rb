@@ -27,7 +27,18 @@ get '/landmarks' do
     
       redirect '/landmarks'
     end
-  
+    
+   patch '/landmarks/:id' do
+      @landmarks = Landmark.find(params[:id])
+      @landmarks.update(params[:landmark])
+      if !params[:title][:name].empty? 
+          @landmarks.title << Title.create(params[:name])
+         else !params[:figure][:name].empty? 
+         @landmarks.figure << Figure.create(params[:landmark])
+      end
+      @landmarks.save
+        redirect "landmarks/#{@landmarks.id}"
+      end
   
   
 end
